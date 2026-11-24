@@ -1,3 +1,55 @@
 /**
 * Accordeon
 */
+
+.accordeon {
+  display: flex;
+  gap: 0.25rem; /* tighten if you want items touching like in the video */
+  flex-direction: column;
+  width: 16rem;
+}
+
+details {
+  overflow: hidden;
+  background-color: #F0F0F0;
+}
+
+summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary img {
+  display: block;
+  width: 10rem;
+  height: auto;
+  object-fit: cover;
+}
+
+summary::after {
+  content: "";
+  width: 0;
+  height: 0;
+  margin-right: 1.25rem;
+  border-top: 1.5rem solid transparent;
+  border-bottom: 1.5rem solid transparent;
+  border-left: 1.75rem solid #c8c8c8;
+  transition: transform 0.35s ease, border-left-color 0.35s ease;
+}
+
+details[open] > summary::after {
+  transform: rotate(90deg);
+  border-left-color: #f5a9ae;
+}
+
+details > div {
+  box-sizing: border-box;
+  padding: 0.75rem 1rem 1rem;
+}
